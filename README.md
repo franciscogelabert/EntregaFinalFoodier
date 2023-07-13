@@ -6,14 +6,7 @@
 
 **Github**
 
-https://franciscogelabert.github.io/EntregaFinalGelabertFrancisco/ 
-
-
-**Vercel**
-
-Domains:  https://entrega-final-gelabert-francisco.vercel.app/
-
-Deployment: https://entrega-final-gelabert-francisco-lb5zsi9ml-franciscogelabert.vercel.app/
+https://franciscogelabert.github.io/EntregaFinal_JS_GelabertFrancisco/
 
 
 ## 02- Descripción entrega Final 
