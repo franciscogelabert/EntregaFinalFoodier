@@ -5,7 +5,6 @@ let origen = "";
 let mensaje = false;
 
 
-
 actualizarPagina();
 
 function actualizarPagina() {
@@ -75,7 +74,7 @@ function cargarIngrediente() {
 
     const alimento1 = new Alimento(nombre, precio, cantidad, calorias, sodio, grasas);
 
-    if (alimento1.valido() && nombreReceta !='' && origen !='') {
+    if (alimento1.valido() && nombreReceta != '' && origen != '') {
         recipe.push(alimento1);
         localStorage.setItem('nombreReceta', nombreReceta);
         localStorage.setItem('origen', origen);
@@ -150,7 +149,7 @@ function eliminarIngrediente(elemento) {
 function calcularTotales() {
     const receta1 = new Receta(nombreReceta, recipe, origen);
     dibujaTablaTotales(receta1.mostrar());
-    }
+}
 
 function dibujaTablaTotales(cantidades) {
     document.getElementById("totalesHead").innerHTML = "";
@@ -174,3 +173,7 @@ function nuevoReporte() {
     localStorage.clear();
 
 }
+
+
+
+

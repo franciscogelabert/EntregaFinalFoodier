@@ -29,7 +29,7 @@ class Receta {
             this.sodio = this.sodio + cantidad / 100 * sodio;
             this.grasas = this.grasas + cantidad / 100 * grasas;
             this.precio = this.precio + cantidad / 100 * precio;
-            this.cantidad = this.cantidad + cantidad;
+            this.cantidad = this.cantidad + parseFloat(cantidad);
        }
 
     }
