@@ -1,9 +1,9 @@
 
 console.log(buscar());
 
-function buscar (){
+async function buscar (){
 
-const url = 'https://edamam-recipe-search.p.rapidapi.com/search?q=chicken';
+const url = 'https://edamam-recipe-search.p.rapidapi.com/search?q=chocolate';
 
 console.log(url);
 
@@ -17,8 +17,10 @@ const options = {
 
 try {
 	const response = await fetch(url, options);
-	const result = await response.text();
+	const result = await response.json();
+	
 	console.log(result);
+	
 } catch (error) {
 	console.error(error);
 }
