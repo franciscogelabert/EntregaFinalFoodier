@@ -2,8 +2,6 @@
 let recipe = [];
 let nombreReceta = "";
 let origen = "";
-let mensaje = false;
-
 
 actualizarPagina();
 
@@ -91,18 +89,14 @@ function cargarIngrediente() {
         const btn = document.createElement("TR");
         btn.innerHTML = fila;
         document.getElementById("tablaAlimentos").appendChild(btn);
-        if (mensaje) {
-            document.getElementById("h3ing").firstElementChild.remove();
-            mensaje = false;
-        }
+
     } else {
-        if (!mensaje) {
-            const agregado = document.createElement("p");
-            const fila = `** Para continuar debe completar todos los datos de la Receta **`;
-            agregado.innerHTML = fila;
-            document.getElementById("h3ing").append(agregado);
-            mensaje = true;
-        }
+        Swal.fire({
+            icon: 'error',
+            title: 'Datos incompletos...',
+            text: 'Para continuar debe completar todos los datos de la Receta',
+              })
+
     }
 }
 
@@ -147,8 +141,19 @@ function eliminarIngrediente(elemento) {
 }
 
 function calcularTotales() {
+   if(recipe.length >0){
     const receta1 = new Receta(nombreReceta, recipe, origen);
-    dibujaTablaTotales(receta1.mostrar());
+        dibujaTablaTotales(receta1.mostrar());
+
+   }else {
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Faltan datos',
+        text: 'Para continuar debe agregar al menos un ingrediente',
+          })
+   }
+   
 }
 
 function dibujaTablaTotales(cantidades) {
@@ -169,8 +174,25 @@ function dibujaTablaTotales(cantidades) {
 }
 
 function nuevoReporte() {
-    window.location.href = window.location.href;
-    localStorage.clear();
+
+    Swal.fire({
+        title: 'Desea borrar toda la Info y comenzar una Receta nueva?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Sí',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            window.location.href = window.location.href;
+            localStorage.clear();
+             } else if (result.isDenied) {
+          Swal.fire('Puede continuar esditando su receta', '', 'info')
+        }
+      })
+
+    
+   
 
 }
 
