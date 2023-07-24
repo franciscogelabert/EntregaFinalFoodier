@@ -19,7 +19,7 @@ function actualizarPagina() {
     }
     else {
         cargarTablaIngredientes();
-        calcularTotales();
+
     }
 }
 
@@ -89,13 +89,24 @@ function cargarIngrediente() {
         const btn = document.createElement("TR");
         btn.innerHTML = fila;
         document.getElementById("tablaAlimentos").appendChild(btn);
+        Toastify({
+            text: "Ingrediente agregado",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
 
     } else {
         Swal.fire({
             icon: 'error',
             title: 'Datos incompletos...',
             text: 'Para continuar debe completar todos los datos de la Receta',
-              })
+        })
 
     }
 }
@@ -141,19 +152,30 @@ function eliminarIngrediente(elemento) {
 }
 
 function calcularTotales() {
-   if(recipe.length >0){
-    const receta1 = new Receta(nombreReceta, recipe, origen);
+    if (recipe.length > 0) {
+        const receta1 = new Receta(nombreReceta, recipe, origen);
         dibujaTablaTotales(receta1.mostrar());
+        Toastify({
+            text: "Totales calculados con éxito",
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
 
-   }else {
+    } else {
 
-    Swal.fire({
-        icon: 'error',
-        title: 'Faltan datos',
-        text: 'Para continuar debe agregar al menos un ingrediente',
-          })
-   }
-   
+        Swal.fire({
+            icon: 'error',
+            title: 'Faltan datos',
+            text: 'Para continuar debe agregar al menos un ingrediente',
+        })
+    }
+
 }
 
 function dibujaTablaTotales(cantidades) {
@@ -181,18 +203,18 @@ function nuevoReporte() {
         showCancelButton: false,
         confirmButtonText: 'Sí',
         denyButtonText: `No`,
-      }).then((result) => {
+    }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             window.location.href = window.location.href;
             localStorage.clear();
-             } else if (result.isDenied) {
-          Swal.fire('Puede continuar esditando su receta', '', 'info')
+        } else if (result.isDenied) {
+            Swal.fire('Puede continuar esditando su receta', '', 'info')
         }
-      })
+    })
 
-    
-   
+
+
 
 }
 
