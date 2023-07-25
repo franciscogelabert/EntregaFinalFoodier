@@ -206,16 +206,13 @@ function nuevoReporte() {
     }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-            window.location.href = window.location.href;
             localStorage.clear();
+            window.location.href = window.location.href;
+            
         } else if (result.isDenied) {
-            Swal.fire('Puede continuar esditando su receta', '', 'info')
+            Swal.fire('Puede continuar editando su receta', '', 'info')
         }
     })
-
-
-
-
 }
 
 
