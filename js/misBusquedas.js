@@ -3,15 +3,13 @@ let lista = [];
 
 
 
-// Para calcular totales. 
+// Cargar resultado de la búsqueda
 const buscar = document.getElementById("buscar");
 buscar.addEventListener("click", buscarlistado);
 
 function buscarlistado() {
-
 	const campo = document.getElementById("campoBusqueda");
 	traducir(campo.value);
-
 }
 
 
