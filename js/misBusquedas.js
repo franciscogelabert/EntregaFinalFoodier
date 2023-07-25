@@ -1,6 +1,8 @@
 
 let lista = [];
 
+
+
 // Para calcular totales. 
 const buscar = document.getElementById("buscar");
 buscar.addEventListener("click", buscarlistado);
@@ -8,18 +10,13 @@ buscar.addEventListener("click", buscarlistado);
 function buscarlistado() {
 
 	const campo = document.getElementById("campoBusqueda");
-	traerJsonExterno(campo.value);
+	traducir(campo.value);
 
 }
 
 
-async function traerJsonExterno(valor) {
-
-	const url = 'https://edamam-recipe-search.p.rapidapi.com/search?q=' + valor;
-	console.log(url);
-
-	console.log(url);
-
+async function traerJsonExterno(valorEs, valorEn) {
+	const url = 'https://edamam-recipe-search.p.rapidapi.com/search?q=' + valorEn;
 	const options = {
 		method: 'GET',
 		headers: {
@@ -33,18 +30,39 @@ async function traerJsonExterno(valor) {
 		const result = await response.json();
 		const publicaciones = document.getElementById("busquedas");
 		publicaciones.innerHTML = ``;
+		const titulo = document.getElementById("titulo");
 
 		lista = result.hits;
-		console.log(lista);
 
-		for (let i = 0; i < lista.length; i++) {
-			cargarPublicacion(armarPublicacion(lista[i]));
+		//lista vacía hacer mensaje
+		//actualizar los hi
+		if (lista.length > 0) {
+			let h2 = document.createElement('h2');
+			h2.innerHTML = 'Se encontraron ' + lista.length + ' recetas que contienen el ingrediente: ' + valorEs;
+			titulo.innerHTML = ``;
+			titulo.appendChild(h2);
+
+			for (let i = 0; i < lista.length; i++) {
+				cargarPublicacion(armarPublicacion(lista[i]));
+			}
+
+		} else {
+			titulo.innerHTML = ``;
+			Swal.fire({
+				title: 'No se encontraron recetas con el Ingrediente ingresado',
+				showClass: {
+					popup: 'animate__animated animate__fadeInDown'
+				},
+				hideClass: {
+					popup: 'animate__animated animate__fadeOutUp'
+				}
+			})
+
 		}
-
-
 	} catch (error) {
 		console.error(error);
 	}
+
 
 }
 
@@ -60,7 +78,6 @@ function cargarPublicacion(publicacion) {
 	btn.classList.add("col-md-6");
 	btn.classList.add("col-lg-3");
 	btn.classList.add("mt-3");
-	console.log(btn);
 	btn.innerHTML = publicacion;
 	publicaciones.appendChild(btn);
 
@@ -124,5 +141,34 @@ function armarPublicacion(elem) {
  </div>
 <!-- end recipe ${elem.id} -->`
 	return publicacion;
+
+}
+
+async function traducir(es) {
+	const url = 'https://google-translate1.p.rapidapi.com/language/translate/v2';
+	const options = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/x-www-form-urlencoded',
+			'Accept-Encoding': 'application/gzip',
+			'X-RapidAPI-Key': 'c42ba26eb2msh377d94bd726419ep18c4e7jsn96e0420e95eb',
+			'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+		},
+		body: new URLSearchParams({
+			source: 'es',
+			target: 'en',
+			q: es
+		})
+	};
+
+	try {
+		const response = await fetch(url, options);
+		const result = await response.text();
+		traerJsonExterno(es,JSON.parse(result).data.translations[0].translatedText);
+
+	} catch (error) {
+		console.error(error);
+	}
+
 
 }
