@@ -33,7 +33,7 @@ async function traerJsonExterno(valorEs,valorEn) {
 
 		if (lista.length > 0) {
 			let h2 = document.createElement('h2');
-			h2.innerHTML = 'Se encontraron ' + lista.length + ' recetas que contienen el ingrediente: ' + valorEs;
+			h2.innerHTML = 'Se encontraron ' + lista.length + ' recetas que contienen la palabra: ' + valorEs;
 			titulo.innerHTML = ``;
 			titulo.appendChild(h2);
 
