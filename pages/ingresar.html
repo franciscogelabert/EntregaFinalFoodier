@@ -10,6 +10,7 @@
 		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 	<link rel="stylesheet" href="../css/boost.css">
 	<link rel="icon" href="../img/ico/favicon.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 	<meta name="description"
 		content="Registrate en Foodier es una nueva red social de ricas comidas y recetas saludabels. Te invitamos a unirte para compartir y aprender nuevas recetas.">
 	<meta name="author" content="Francisco Gelabert">
@@ -124,15 +125,7 @@
 
 					<div class="d-flex justify-content-end col-sm-10">
 						<button id="ingresar" type="submit" class="button">Ingresar </button>
-						<script>
-							function abrirNuevoTab(url) {
-								// Abrir nuevo tab
-								var win = window.open(url);
-							}
-							$('#ingresar').click(function () {
-								abrirNuevoTab('404.html')
-							})
-						</script>
+
 						<button type="reset" class="button">Cancelar </button>
 					</div>
 				</form>
@@ -140,6 +133,7 @@
 			</div>
 		</div>
 		<!-- End Form Usuario Registrado -->
+
 
 
 		<!-- Form Google Facebook -->
@@ -159,64 +153,67 @@
 		<!-- End Form Google Facebook -->
 
 		<!-- Form Registrarse -->
-		<h2> Registrarse a Foodier </h2>
-		<h3> Un Mundo de recetas y sabores </h3>
-		<div class="row">
-			<div class="mx-auto col-10 col-md-8 col-lg-6">
-				<form>
-					<div class="form-group mb-3 mt-3">
-						<label for="inputEmail" class="col-sm-6 col-form-label fs-5">¿Cuál es su correo
-							electrónico?</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputEmail">
+		<h2> Registrarse a Foodier</h2>
+		<h3 class="animate__shakeY"> Si se registra dentro de los próximos minutos participa por un sorteo !!</h2>
+			<h4 id="reloj" class="d-flex justify-content-center"></h4>
+
+			<div class="row">
+				<div class="mx-auto col-10 col-md-8 col-lg-6">
+					<form>
+						<div class="form-group mb-3 mt-3">
+							<label for="inputEmail" class="col-sm-6 col-form-label fs-5">¿Cuál es su correo
+								electrónico?</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="inputEmail">
+							</div>
 						</div>
-					</div>
-					<div class="form-group mb-3">
-						<label for="inputPassword" class="col-sm-6 col-form-label fs-5">Ingrese una contraseña</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" id="inputPassword">
+						<div class="form-group mb-3">
+							<label for="inputPassword" class="col-sm-6 col-form-label fs-5">Ingrese una
+								contraseña</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword">
+							</div>
 						</div>
-					</div>
-					<div class="form-group mb-3 mt-3">
-						<label for="userName" class="col-sm-6 col-form-label fs-5">¿Cómo quieres que te
-							llamemos?</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="userName">
+						<div class="form-group mb-3 mt-3">
+							<label for="userName" class="col-sm-6 col-form-label fs-5">¿Cómo quieres que te
+								llamemos?</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="userName">
+							</div>
 						</div>
-					</div>
-					<div class="form-group mb-3 mt-3">
-						<label for="fechaNac" class="col-sm-6 col-form-label fs-5">Fecha de Nacimiento</label>
-						<div class="col-sm-10">
-							<input type="date" class="form-control" id="fechaNac">
+						<div class="form-group mb-3 mt-3">
+							<label for="fechaNac" class="col-sm-6 col-form-label fs-5">Fecha de Nacimiento</label>
+							<div class="col-sm-10">
+								<input type="date" class="form-control" id="fechaNac">
+							</div>
 						</div>
+
+						<div class="form-group mb-2 mt-3">
+							<label for="genero" class="col-sm-6 col-form-label fs-5">Género:</label>
+							<div class="col-sm-10">
+								<select class="form-select" id="idgenero" aria-label="Seleccione uno">
+									<option selected>Seleccione uno ...</option>
+									<option value="masculino">Masculino</option>
+									<option value="femenino">Femenino</option>
+									<option value="otro">Otro</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+							<label class="form-check-label" for="flexCheckChecked"></label>
+							<a href="404.html" rel="nofollow">Acepto los términos y condiciones.</a>
+						</div>
+
+					</form>
+					<div class="d-flex justify-content-end col-sm-10">
+						<button id="registrarse" type="submit" class="button">Registrarse </button>
+						<button type="reset" class="button">Cancelar </button>
 					</div>
 
-					<div class="form-group mb-2 mt-3">
-						<label for="genero" class="col-sm-6 col-form-label fs-5">Género:</label>
-						<div class="col-sm-10">
-							<select class="form-select" id="idgenero" aria-label="Seleccione uno">
-								<option selected>Seleccione uno ...</option>
-								<option value="masculino">Masculino</option>
-								<option value="femenino">Femenino</option>
-								<option value="otro">Otro</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-						<label class="form-check-label" for="flexCheckChecked"></label>
-						<a href="404.html" rel="nofollow">Acepto los términos y condiciones.</a>
-					</div>
-
-				</form>
-				<div class="d-flex justify-content-end col-sm-10">
-					<button id="registrarse" type="submit" class="button">Registrarse </button>
-					<button type="reset" class="button">Cancelar </button>
 				</div>
-
 			</div>
-		</div>
-		<!-- End Form Registrarse -->
+			<!-- End Form Registrarse -->
 	</main>
 	<!-- Footer tener en cuenta que presenta diferentes formatos dependiendo la resolución -->
 	<footer>
@@ -275,6 +272,7 @@
 		crossorigin="anonymous"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 	<script src="../js/wow.min.js"></script>
 	<script src="../js/registrarUsuario.js"></script>
 
