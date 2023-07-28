@@ -12,7 +12,7 @@ function buscarlistado() {
 }
 
 
-async function traerJsonExterno(valorEs,valorEn) {
+async function traerJsonExterno(valorEs, valorEn) {
 	const url = 'https://edamam-recipe-search.p.rapidapi.com/search?q=' + valorEn;
 	const options = {
 		method: 'GET',
@@ -143,29 +143,29 @@ function armarPublicacion(elem) {
 
 async function traducir(es) {
 	const url = 'https://google-translate105.p.rapidapi.com/v1/rapid/translate';
-const options = {
-	method: 'POST',
-	headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': 'c42ba26eb2msh377d94bd726419ep18c4e7jsn96e0420e95eb',
-		'X-RapidAPI-Host': 'google-translate105.p.rapidapi.com'
-	},
-	body: new URLSearchParams({
-		text: es,
-		to_lang: 'en',
-		from_lang: 'es'
-	})
-};
+	const options = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/x-www-form-urlencoded',
+			'X-RapidAPI-Key': 'c42ba26eb2msh377d94bd726419ep18c4e7jsn96e0420e95eb',
+			'X-RapidAPI-Host': 'google-translate105.p.rapidapi.com'
+		},
+		body: new URLSearchParams({
+			text: es,
+			to_lang: 'en',
+			from_lang: 'es'
+		})
+	};
 
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	traerJsonExterno(es,JSON.parse(result).translated_text);
-} catch (error) {
-	Swal.fire({
-		icon: 'error',
-		title: 'Problemas con la conexión',
-		text: 'Por favor intente en unos minutos (#CODE_API)',
-	})
-}
+	try {
+		const response = await fetch(url, options);
+		const result = await response.text();
+		traerJsonExterno(es, JSON.parse(result).translated_text);
+	} catch (error) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Problemas con la conexión',
+			text: 'Por favor intente en unos minutos (#CODE_API)',
+		})
+	}
 }
