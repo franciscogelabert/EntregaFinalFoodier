@@ -4,7 +4,6 @@ const btnPublicar = document.getElementById("registrarse");
 btnPublicar.addEventListener("click", verificarDatos);
 let registro = false;
 
-
 let timeleft = 40;
 let tiempoPromo = setInterval(function () {
 
@@ -46,8 +45,6 @@ function verificarDatos() {
       text: 'Debe completar todos sus datos para registrarse',
     })
   }
-
-
 }
 
 function validarForm() {

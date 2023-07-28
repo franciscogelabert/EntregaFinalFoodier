@@ -166,9 +166,7 @@ function calcularTotales() {
                 background: "linear-gradient(to right, #00b09b, #96c93d)",
             },
         }).showToast();
-
     } else {
-
         Swal.fire({
             icon: 'error',
             title: 'Faltan datos',
