@@ -6,6 +6,7 @@ let lista = [];
 const buscar = document.getElementById("buscar");
 buscar.addEventListener("click", buscarlistado);
 
+
 function buscarlistado() {
 	const campo = document.getElementById("campoBusqueda");
 	traducir(campo.value);
